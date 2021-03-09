@@ -1,11 +1,31 @@
 package javaRoid;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Blacy implements KeyListener {
 
-    Game game;
+   private Game game;
+
+   private int[] blacyXLength= new int[750];
+    private int[] blacyYLength= new int[750];
+    private int lengthOfBlacy= 3;
+
+
+   private boolean up = false;
+    private boolean down = false;
+    private boolean right = true;
+    private boolean left = false;
+public void paint(Graphics g) {
+  Graphics2D g2 = (Graphics2D) g;
+    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING , RenderingHints.VALUE_ANTIALIAS_ON);
+
+
+}
+
+
+
     public Blacy(Game game){
         this.game= game;
 

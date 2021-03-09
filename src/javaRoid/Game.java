@@ -6,26 +6,22 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Game extends JPanel implements  Runnable, KeyListener {
-    Blacy blacyObject =new Blacy(this);
+    Blacy blacyObject = new Blacy(this);
     Thread BlacyThread;
 
-    public void addNotify(){
-    super.addNotify();
-    BlacyThread =new Thread(this);
-    BlacyThread.start();
+    public void addNotify() {
+        super.addNotify();
+        BlacyThread = new Thread(this);
+        BlacyThread.start();
 
     }
 
-    public void paint(Graphics g){
- super.paint(g);
- Graphics2D g2 = (Graphics2D) g;
-g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING , RenderingHints.VALUE_ANTIALIAS_ON);
-
-
+    public void paint(Graphics g) {
+        super.paint(g);
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        blacyObject.paint(g2);
     }
-
-
-
 
 
     @Override
@@ -45,6 +41,9 @@ g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING , RenderingHints.VALUE_ANTIA
 
     @Override
     public void run() {
+        while (true) {
+            repaint();
 
+        }
     }
 }
