@@ -11,7 +11,7 @@ public class Main extends JFrame {
         setTitle("SNAKE");
         setSize(900,700);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
