@@ -49,7 +49,7 @@ public class Game extends JPanel implements  Runnable, KeyListener {
         Font font =new Font("arial",Font.BOLD,40);
         g2.setFont(font);
         g2.drawString("Score : ",30,650);
-        g2.drawString("" + playerObject.getScore(), 180,650);
+        //g2.drawString("" + playerObject.getScore(), 180,650);
 
     }
 
