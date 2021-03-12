@@ -21,7 +21,12 @@ public class Blacy implements KeyListener {
 
     private int[] blacyXLength = new int[750];
     private int[] blacyYLength = new int[750];
-    private int lengthOfBlacy = 3;
+
+    public void setLengthOfBlacy() {
+       lengthOfBlacy++;
+    }
+
+    private int lengthOfBlacy = 2;
     private int location = 0;
 
     private boolean up = false;
@@ -213,6 +218,24 @@ public class Blacy implements KeyListener {
 
 
         }
+
+        for (int j=1; j<lengthOfBlacy;j++){
+
+            if (blacyXLength[j]==blacyXLength[0]&&blacyYLength[j]==blacyYLength[0]){
+
+            game.setGameOver(false);
+
+            }
+
+
+
+
+
+        }
+
+
+
+
 
 
     }

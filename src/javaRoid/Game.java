@@ -11,12 +11,18 @@ import java.io.IOException;
 
 public class Game extends JPanel implements  Runnable, KeyListener {
 
+    public void setGameOver(Boolean gameOver) {
+        this.gameOver = gameOver;
+    }
 
+    private Boolean gameOver=true;
     private BufferedImage backImage;
+    private  BufferedImage gameOverImage;
     Blacy blacyObject = new Blacy(this);
     Coin coinObject=new Coin();
     Player playerObject=new Player(this);
     Thread BlacyThread;
+
 
     public void addNotify() {
         super.addNotify();
@@ -30,6 +36,7 @@ public class Game extends JPanel implements  Runnable, KeyListener {
         try {
 
             backImage = ImageIO.read(new File("backImage.png"));
+            gameOverImage=ImageIO.read(new File("gameOver.png"));
 
 
         } catch(IOException e ) {
@@ -41,23 +48,28 @@ public class Game extends JPanel implements  Runnable, KeyListener {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        setBackground(Color.BLACK);
         g2.drawImage(backImage,null,0,0);
         blacyObject.paint(g2);
         coinObject.paint(g2);
 
-        g2.setColor(Color.black);
+        g2.setColor(Color.white);
         Font font =new Font("arial",Font.BOLD,40);
         g2.setFont(font);
         g2.drawString("Score : ",30,650);
-        //g2.drawString("" + playerObject.getScore(), 180,650);
+        g2.drawString("" + playerObject.getScore(), 180,650);
+        if (!gameOver){
+            g2.drawImage(gameOverImage,null,0,0);
+
+        }
 
     }
 
 
     public  void move(){
-
+        playerObject.getCoinPos();
 playerObject.getCoin();
-playerObject.getCoinPos();
+
 
 
     }
@@ -81,7 +93,7 @@ playerObject.getCoinPos();
 
     @Override
     public void run() {
-        while (true) {
+        while (gameOver) {
             repaint();
             move();
             try {
